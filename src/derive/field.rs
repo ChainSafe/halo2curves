@@ -349,7 +349,7 @@ macro_rules! field_common {
                 }
                 res
             }
-            fn read_raw_unchecked<R: std::io::Read>(reader: &mut R) -> Self {
+            fn read_raw_unchecked<R: $crate::io::Read>(reader: &mut R) -> Self {
                 let inner = [(); 4].map(|_| {
                     let mut buf = [0; 8];
                     reader.read_exact(&mut buf).unwrap();
@@ -357,7 +357,7 @@ macro_rules! field_common {
                 });
                 Self(inner)
             }
-            fn read_raw<R: std::io::Read>(reader: &mut R) -> std::io::Result<Self> {
+            fn read_raw<R: crate::io::Read>(reader: &mut R) -> crate::io::Result<Self> {
                 let mut inner = [0u64; 4];
                 for limb in inner.iter_mut() {
                     let mut buf = [0; 8];
@@ -368,13 +368,10 @@ macro_rules! field_common {
                 Self::is_less_than(&elt.0, &$modulus.0)
                     .then(|| elt)
                     .ok_or_else(|| {
-                        std::io::Error::new(
-                            std::io::ErrorKind::InvalidData,
-                            "input number is not less than field modulus",
-                        )
+                        "input number is not less than field modulus"
                     })
             }
-            fn write_raw<W: std::io::Write>(&self, writer: &mut W) -> std::io::Result<()> {
+            fn write_raw<W: crate::io::Write>(&self, writer: &mut W) -> crate::io::Result<()> {
                 for limb in self.0.iter() {
                     writer.write_all(&limb.to_le_bytes())?;
                 }

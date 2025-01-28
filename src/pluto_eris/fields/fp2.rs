@@ -536,16 +536,16 @@ impl crate::serde::SerdeObject for Fp2 {
         }
         res
     }
-    fn read_raw_unchecked<R: std::io::Read>(reader: &mut R) -> Self {
+    fn read_raw_unchecked<R: crate::io::Read>(reader: &mut R) -> Self {
         let [c0, c1] = [(); 2].map(|_| Fp::read_raw_unchecked(reader));
         Self { c0, c1 }
     }
-    fn read_raw<R: std::io::Read>(reader: &mut R) -> std::io::Result<Self> {
+    fn read_raw<R: crate::io::Read>(reader: &mut R) -> crate::io::Result<Self> {
         let c0 = Fp::read_raw(reader)?;
         let c1 = Fp::read_raw(reader)?;
         Ok(Self { c0, c1 })
     }
-    fn write_raw<W: std::io::Write>(&self, writer: &mut W) -> std::io::Result<()> {
+    fn write_raw<W: crate::io::Write>(&self, writer: &mut W) -> crate::io::Result<()> {
         self.c0.write_raw(writer)?;
         self.c1.write_raw(writer)
     }

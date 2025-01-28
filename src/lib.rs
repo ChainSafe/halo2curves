@@ -1,7 +1,10 @@
+extern crate alloc;
+
 mod arithmetic;
 pub mod ff_ext;
 pub mod fft;
 pub mod hash_to_curve;
+pub mod io;
 pub mod msm;
 pub mod serde;
 
