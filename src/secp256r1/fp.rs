@@ -6,12 +6,12 @@ use crate::{
     impl_binops_additive, impl_binops_additive_specify_output, impl_binops_multiplicative,
     impl_binops_multiplicative_mixed, impl_from_u64, impl_sub_binop_specify_output, impl_sum_prod,
 };
+use alloc::vec::Vec;
 use core::convert::TryInto;
 use core::fmt;
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 /// This represents an element of $\mathbb{F}_p$ where
 ///
 /// `p = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff

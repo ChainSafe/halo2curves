@@ -13,26 +13,20 @@
 #[macro_use]
 extern crate criterion;
 
+use core::ops::Range;
 use criterion::{BenchmarkId, Criterion};
 use group::ff::Field;
 use halo2curves::bn256::Fr as Scalar;
 use halo2curves::fft::best_fft;
 use rand_core::OsRng;
-use std::ops::Range;
-use std::time::SystemTime;
 
 const RANGE: Range<u32> = 3..19;
 
 fn generate_data(k: u32) -> Vec<Scalar> {
     let n = 1 << k;
-    let timer = SystemTime::now();
     println!("\n\nGenerating 2^{k} = {n} values..",);
     let data: Vec<Scalar> = (0..n).map(|_| Scalar::random(OsRng)).collect();
-    let end = timer.elapsed().unwrap();
-    println!(
-        "Generating 2^{k} = {n} values took: {} sec.\n\n",
-        end.as_secs()
-    );
+
     data
 }
 

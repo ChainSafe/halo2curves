@@ -2,10 +2,10 @@ use super::fp::Fp;
 use super::fp2::Fp2;
 use super::fp6::Fp6;
 use crate::ff::Field;
+
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 /// -GAMMA is a quadratic non-residue in Fp6. Fp12 = Fp6[X]/(X^2 + GAMMA)
 /// We introduce the variable w such that w^2 = -GAMMA
 /// GAMMA = - v

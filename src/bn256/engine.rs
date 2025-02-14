@@ -8,13 +8,15 @@ use crate::bn256::fr::*;
 use crate::ff::{Field, PrimeField};
 use crate::group::cofactor::CofactorCurveAffine;
 use crate::group::Group;
+use alloc::vec;
+use alloc::vec::Vec;
+
 use core::borrow::Borrow;
 use core::iter::Sum;
 use core::ops::{Add, Mul, MulAssign, Neg, Sub};
 use pairing::{Engine, MillerLoopResult, MultiMillerLoop, PairingCurveAffine};
 use rand_core::RngCore;
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq};
-
 pub const BN_X: u64 = 4965661367192848881;
 
 // 6U+2 for in NAF form
@@ -60,8 +62,8 @@ impl PairingCurveAffine for G2Affine {
 #[derive(Copy, Clone, Debug, Default)]
 pub struct Gt(pub(crate) Fq12);
 
-impl std::fmt::Display for Gt {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl core::fmt::Display for Gt {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         write!(f, "{self:?}")
     }
 }

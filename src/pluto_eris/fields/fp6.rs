@@ -1,10 +1,10 @@
 use super::fp::Fp;
 use super::fp2::Fp2;
 use crate::ff::Field;
+
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 /// -BETA is a cubic non-residue in Fp2. Fp6 = Fp2[X]/(X^3 + BETA)
 /// We introduce the variable v such that v^3 = -BETA
 /// BETA = - 57/(z+3)
@@ -286,7 +286,7 @@ impl Fp6 {
 
     /// Multiply by cubic nonresidue v.
     pub fn mul_by_nonresidue(&mut self) {
-        use std::mem::swap;
+        use core::mem::swap;
         swap(&mut self.c0, &mut self.c1);
         swap(&mut self.c0, &mut self.c2);
         // c0, c1, c2 -> c2, c0, c1

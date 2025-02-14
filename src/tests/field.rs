@@ -456,7 +456,7 @@ macro_rules! field_testing_suite {
             assert!($test_vectors.len() == N_VECS);
 
             let mut seeded_rng = XorShiftRng::seed_from_u64(0u64);
-            let uniform_bytes = std::iter::from_fn(|| {
+            let uniform_bytes = core::iter::from_fn(|| {
                 let mut bytes = [0u8; 64];
                 seeded_rng.fill_bytes(&mut bytes);
                 Some(bytes)

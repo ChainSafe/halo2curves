@@ -1,14 +1,15 @@
 use super::fq::{Fq, NEGATIVE_ONE};
 use crate::ff::{Field, FromUniformBytes, PrimeField, WithSmallOrderMulGroup};
 use crate::ff_ext::Legendre;
+
+use alloc::vec::Vec;
+use core::cmp::Ordering;
 use core::convert::TryInto;
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
-use std::cmp::Ordering;
-use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
+use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
 
 /// An element of Fq2, represented by c0 + c1 * u; where u^2 = -1.
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]

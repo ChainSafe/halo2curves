@@ -367,9 +367,7 @@ macro_rules! field_common {
                 let elt = Self(inner);
                 Self::is_less_than(&elt.0, &$modulus.0)
                     .then(|| elt)
-                    .ok_or_else(|| {
-                        "input number is not less than field modulus"
-                    })
+                    .ok_or_else(|| "input number is not less than field modulus")
             }
             fn write_raw<W: crate::io::Write>(&self, writer: &mut W) -> crate::io::Result<()> {
                 for limb in self.0.iter() {

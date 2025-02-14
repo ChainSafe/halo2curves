@@ -75,8 +75,8 @@ macro_rules! new_curve_impl {
                 pub struct [<$name Compressed >](#[cfg_attr(feature = "derive_serde", serde(with = "serde_arrays"))] [u8; [< $name _COMPRESSED_SIZE >]]);
 
                 // Compressed
-                impl std::fmt::Debug for [< $name Compressed >] {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                impl core::fmt::Debug for [< $name Compressed >] {
+                    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
                         self.0[..].fmt(f)
                     }
                 }
@@ -184,8 +184,8 @@ macro_rules! new_curve_impl {
                 };
                 #[derive(Copy, Clone)]
                 pub struct [< $name Uncompressed >]([u8; [< $name _UNCOMPRESSED_SIZE >]]);
-                    impl std::fmt::Debug for [< $name Uncompressed >] {
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    impl core::fmt::Debug for [< $name Uncompressed >] {
+                        fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
                             self.0[..].fmt(f)
                         }
                     }
@@ -775,8 +775,8 @@ macro_rules! new_curve_impl {
 
         // Affine implementations
 
-        impl std::fmt::Debug for $name_affine {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        impl core::fmt::Debug for $name_affine {
+            fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> Result<(), core::fmt::Error> {
                 if self.is_identity().into() {
                     write!(f, "Infinity")
                 } else {

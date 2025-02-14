@@ -1,14 +1,15 @@
 #![allow(clippy::op_ref)]
 
-use ff::{Field, FromUniformBytes, PrimeField};
-use pasta_curves::arithmetic::CurveExt;
-use static_assertions::const_assert;
-use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 use crate::{
     ff_ext::Legendre,
     secp256k1::{iso_map_secp256k1, IsoSecp256k1, Secp256k1},
 };
+use alloc::boxed::Box;
+
+use ff::{Field, FromUniformBytes, PrimeField};
+use pasta_curves::arithmetic::CurveExt;
+use static_assertions::const_assert;
+use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
 
 /// Hashes over a message and writes the output to all of `buf`.
 /// Modified from https://github.com/zcash/pasta_curves/blob/7e3fc6a4919f6462a32b79dd226cb2587b7961eb/src/hashtocurve.rs#L11.

@@ -9,6 +9,8 @@ use crate::pluto_eris::fields::fp12::*;
 use crate::pluto_eris::fields::fp2::*;
 use crate::pluto_eris::fields::fp6::FROBENIUS_COEFF_FP6_C1;
 use crate::pluto_eris::fields::fq::*;
+use alloc::vec;
+use alloc::vec::Vec;
 use core::borrow::Borrow;
 use core::iter::Sum;
 use core::ops::{Add, Mul, MulAssign, Neg, Sub};
@@ -70,8 +72,8 @@ impl PairingCurveAffine for G2Affine {
 #[derive(Copy, Clone, Debug, Default)]
 pub struct Gt(pub(crate) Fp12);
 
-impl std::fmt::Display for Gt {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl core::fmt::Display for Gt {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         write!(f, "{:?}", self)
     }
 }

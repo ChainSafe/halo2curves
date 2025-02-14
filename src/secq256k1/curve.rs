@@ -10,15 +10,16 @@ use crate::{
     new_curve_impl,
 };
 use crate::{Coordinates, CurveAffine, CurveExt};
+use alloc::boxed::Box;
+use alloc::vec::Vec;
 use core::cmp;
 use core::fmt::Debug;
 use core::iter::Sum;
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
-use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
+use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
 
 const SECQ_GENERATOR_X: Fq = Fq::from_raw([
     0xA24288E37702EDA6,

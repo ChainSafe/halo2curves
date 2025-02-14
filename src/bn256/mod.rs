@@ -45,7 +45,7 @@ mod test {
         ];
 
         let mut seeded_rng = rand_chacha::ChaChaRng::seed_from_u64(0u64);
-        let uniform_bytes = std::iter::from_fn(|| {
+        let uniform_bytes = core::iter::from_fn(|| {
             let mut bytes = [0u8; 32];
             seeded_rng.fill_bytes(&mut bytes);
             Some(bytes)

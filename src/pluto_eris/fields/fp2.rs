@@ -1,15 +1,16 @@
 use super::fp::{Fp, MODULUS_STR};
 use crate::ff::{Field, FromUniformBytes, PrimeField, WithSmallOrderMulGroup};
 use crate::ff_ext::Legendre;
+
+use alloc::vec::Vec;
+use core::cmp::Ordering;
 use core::convert::TryInto;
+use core::ops::MulAssign;
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
-use std::cmp::Ordering;
-use std::ops::MulAssign;
-use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
+use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
 
 /// -ALPHA is a quadratic non-residue in Fp. Fp2 = Fp[X]/(X^2 + ALPHA)
 /// We introduce the variable u such that u^2 = -ALPHA

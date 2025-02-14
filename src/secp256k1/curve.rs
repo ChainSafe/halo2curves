@@ -4,19 +4,20 @@ use crate::group::{prime::PrimeCurveAffine, Curve, Group as _, GroupEncoding};
 use crate::hash_to_curve::{sswu_hash_to_curve, sswu_hash_to_curve_secp256k1};
 use crate::secp256k1::Fp;
 use crate::secp256k1::Fq;
+use crate::{
+    impl_add_binop_specify_output, impl_binops_additive, impl_binops_additive_specify_output,
+    impl_binops_multiplicative, impl_binops_multiplicative_mixed, impl_sub_binop_specify_output,
+    new_curve_impl,
+};
 use crate::{Coordinates, CurveAffine, CurveExt};
+use alloc::boxed::Box;
+use alloc::vec::Vec;
 use core::cmp;
 use core::fmt::Debug;
 use core::iter::Sum;
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
-use crate::{
-    impl_add_binop_specify_output, impl_binops_additive, impl_binops_additive_specify_output,
-    impl_binops_multiplicative, impl_binops_multiplicative_mixed, impl_sub_binop_specify_output,
-    new_curve_impl,
-};
 
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};

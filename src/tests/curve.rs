@@ -369,7 +369,7 @@ macro_rules! curve_testing_suite {
         #[test]
         fn test_hash_to_curve() {
             use rand_core::{OsRng, RngCore};
-            use std::iter;
+            use core::iter;
             $(
                 hash_to_curve_test!($curve);
             )*

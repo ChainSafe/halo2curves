@@ -9,15 +9,16 @@ use crate::{
     impl_binops_multiplicative, impl_binops_multiplicative_mixed, impl_sub_binop_specify_output,
     impl_sum_prod,
 };
+
+use alloc::vec::Vec;
 use core::convert::TryInto;
 use core::fmt;
 use core::ops::{Add, Mul, Neg, Sub};
+use core::slice::Iter;
 use rand::RngCore;
-use std::slice::Iter;
-use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
+use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
 
 /// This represents an element of $\mathbb{F}_q$ where
 ///

@@ -4,11 +4,10 @@ use crate::{
     arithmetic::{CurveEndo, EndoParameters},
     endo,
 };
+use core::convert::TryInto;
 use ff::PrimeField;
 use ff::WithSmallOrderMulGroup;
 pub use pasta_curves::{pallas, vesta, Ep, EpAffine, Eq, EqAffine, Fp, Fq};
-use std::convert::TryInto;
-
 // Generated using https://github.com/ConsenSys/gnark-crypto/blob/master/ecc/utils.go
 // with `pasta_curves::Fp::ZETA`
 // See https://github.com/demining/Endomorphism-Secp256k1/blob/main/README.md

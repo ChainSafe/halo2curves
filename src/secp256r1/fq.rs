@@ -1,11 +1,11 @@
 use crate::arithmetic::{adc, mac, macx, sbb};
 use crate::extend_field_legendre;
 use crate::ff::{FromUniformBytes, PrimeField, WithSmallOrderMulGroup};
+use alloc::vec::Vec;
 use core::fmt;
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
-
 /// This represents an element of $\mathbb{F}_q$ where
 ///
 /// `q = 0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551`
